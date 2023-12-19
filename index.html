@@ -1,77 +1,237 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="commen_cf.css">
-    <title>Login Page</title>
-    <script src="https://kit.fontawesome.com/bc0ac06df1.js" crossorigin="anonymous"></script>
-    <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page</title>
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> <!-- Load Font Awesome -->
+<style>
+  :root {
+    --praimery: #FCB040;
+  }
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    overflow: hidden; /* Prevent scrolling */
+  }
+  .circle1 {
+    width: 500px;
+    height: 500px;
+    border-radius: 60%;
+    background: var(--praimery);
+    position: absolute;
+    top: 50%;
+    left: -9%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+  }
 
-.login-container {
-    padding: 5%;
+  .circle2 {
+    width: 500px;
+    height: 500px;
+    border-radius: 60%;
+    background: var(--praimery);
+    position: absolute;
+    top: -14%;
+    left: 97%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+  }
+
+  .circle3 {
+    width: 500px;
+    height: 500px;
+    border-radius: 60%;
+    background: var(--praimery);
+    position: absolute;
+    top: 104%;
+    left: 97%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+  }
+  
+  .login-container {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+    width: auto; /* Adjust width */
+    max-width: 400px; /* Max width for larger screens */
+  }
+  .login-container h2 {
+    color: var(--praimery);
+    text-align: center;
+  }
+  .input-group {
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .input-group input {
+    width: calc(100% - 22px); /* Adjust width to account for padding and border */
+    padding: 10px;
+    margin: 5px 0;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  .login-btn {
+    background: var(--praimery);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+  }
+  .fa-eye {
+    position: absolute;
+    right: 10px;
+    top: 10px; /* Adjust position to align with password input */
+    cursor: pointer;
+  }
+
+ .image-container{
+    max-width: 100%; 
+    height: auto;
+ }
+
+ .logo {
+  width: 60%; /* Default width */
+  margin-left: 20%; /* Default margin-left */
+  display: block; /* To ensure margin applies correctly */
+  height: auto; /* Maintain aspect ratio */
 }
-    </style>
-</head>
 
+  @media only screen and (max-width: 1200px) {
+    .circle1, .circle2, .circle3 {
+        width: 400px;
+        height: 400px;
+  }
+    }
 
+    @media only screen and (max-width: 992px) {
+    .circle1, .circle2, .circle3 {
+        width: 300px;
+        height: 300px;
+    }
+    .login-container {
+        max-width: 350px;
+    }
+    }
 
-<body>
+    @media only screen and (max-width: 768px) {
+    .circle1, .circle2, .circle3 {
+        width: 200px;
+        height: 200px;
+    }
+    .login-container {
+        max-width: 300px;
+    }
+    .fa-eye {
+        top: 8px; /* Adjust top position for smaller screens */
+    }
+    .logo {
+    width: 80%; /* Larger percentage of the width for smaller screens */
+    margin-left: 10%; /* Adjust margin to keep it centered */
+    }
+    }
+
+    @media only screen and (max-width: 576px) {
+
+    .circle1{
+        width: 900px;
+        height: 500px;
+        top: -2%;
+        left: 74%
+    }
     
+    .circle2, .circle3 {
+        display: none; /* Hide the circles on very small screens to focus on the form */
+    }
+    
+    .login-container {
+        background: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        position: relative;
+        z-index: 1;
+        width: auto; /* Adjust width */
+        max-width: 400px; 
+        top: 50%;
+        left: 40%;
+    }
+  
+    .fa-eye {
+        right: 35px; /* Adjust right position for smaller input fields */
+    }
+
+    .logo {
+    width: 80%; /* Larger percentage of the width for smaller screens */
+    margin-left: 10%; /* Adjust margin to keep it centered */
+    }
+    }
+
+</style>
+</head>
+<body>
+
+    <div class="circle1"></div>
+    <div class="circle2"></div>
+    <div class="circle3"></div>
     <div class="login-container">
-        <form id="loginForm">
-            <div>
-              
-                <img src="./cf_logo.png" alt="Responsive Image">
-              </div>
-            <div class="animation-container">
-                <div class="word">Welcome<i class="fa-solid fa-feather" style="color: black;"></i></div>
-               
-            </div>
-            <div class="input-container">
-                <input type="text" id="username" placeholder="Username" required>
-            </div>
-            <div class="input-container">
-                <input type="password" id="password" placeholder="Password" required>
-                <span class="toggle-password" onclick="togglePassword()"></span>
-            </div>
-            <div class="forgot-password">
-                <a href="Forgotpass.html">Forgot Password?</a>
-            </div>
-            <input type="submit" href="home mobile.html" onclick="login()" value="login" >
+   
+        <img src="./assests/cf_logo.png" alt="Creating Futures Logo" class="logo">
+   
+    
+        <div class="input-group">
+            <input type="text" id="username" placeholder="Username">
+        </div>
+        <div class="input-group" style="position: relative;">
+            <input type="password" id="password" placeholder="Password">
+            <i class="fas fa-eye" onclick="togglePassword()"></i>
+        </div>
+        <button class="login-btn" onclick="validateForm()">Login</button>
     </div>
 
-
-    
-
     <script>
-        function togglePassword() {
-            var passwordInput = document.getElementById("password");
-            var toggleIcon = document.querySelector(".toggle-password");
-        
-            if (passwordInput.type === "password") {
-                passwordInput.type = "text";
-                toggleIcon.style.backgroundImage = "url('eyes\ open.webp')";
-            } else {
-                passwordInput.type = "password";
-                toggleIcon.style.backgroundImage = "url('eyes close.jpg')";
-            }
-        }
-        
-        function login() {
-        
-            alert("Filled the details");
-        }
-        
+    function togglePassword() {
+    var passwordInput = document.getElementById('password');
+    var passStatus = document.querySelector('.fa-eye');
+    
+    if (passwordInput.type === 'password'){
+        passwordInput.type='text';
+        passStatus.classList.remove('fa-eye');
+        passStatus.classList.add('fa-eye-slash');
+    }
+    else{
+        passwordInput.type='password';
+        passStatus.classList.remove('fa-eye-slash');
+        passStatus.classList.add('fa-eye');
+    }
+    }
 
-            function login() {
-              
-                window.location.href = "home mobile.html";
-            }
-        
-        
+    function validateForm() {
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
+    
+    if(username == '' || password == '') {
+        alert('Please fill out all fields.');
+        return false;
+    }
+    // Add further validation if needed
+    alert('Form is valid!'); // This can be replaced with actual form submission
+    return true;
+    }
     </script>
-</body>
 
+</body>
 </html>
