@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Login Page</title>
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> <!-- Load Font Awesome -->
+
 <style>
   :root {
     --praimery: #FCB040;
@@ -91,12 +91,6 @@
     width: 100%;
     border-radius: 5px;
   }
-  .fa-eye {
-    position: absolute;
-    right: 10px;
-    top: 10px; /* Adjust position to align with password input */
-    cursor: pointer;
-  }
 
  .image-container{
     max-width: 100%; 
@@ -135,9 +129,7 @@
     .login-container {
         max-width: 300px;
     }
-    .fa-eye {
-        top: 8px; /* Adjust top position for smaller screens */
-    }
+
     .logo {
     width: 80%; /* Larger percentage of the width for smaller screens */
     margin-left: 10%; /* Adjust margin to keep it centered */
@@ -177,9 +169,6 @@
         left: 40%;
     }
   
-    .fa-eye {
-        right: 35px; /* Adjust right position for smaller input fields */
-    }
 
     .logo {
     width: 80%; /* Larger percentage of the width for smaller screens */
@@ -204,27 +193,25 @@
             <input type="text" id="username" placeholder="Username">
         </div>
         <div class="input-group" style="position: relative;">
-            <input type="password" id="password" placeholder="Password">
-            <i class="fas fa-eye" onclick="togglePassword()"></i>
+          <input type="password" id="password" placeholder="Password">
+          <span onclick="togglePasswordVisibility()" id="eyeIcon" style="cursor: pointer; position: absolute; right: 10px; top: 10px;">👁️</span>
         </div>
         <button class="login-btn" onclick="validateForm()">Login</button>
     </div>
 
     <script>
-    function togglePassword() {
-    var passwordInput = document.getElementById('password');
-    var passStatus = document.querySelector('.fa-eye');
-    
-    if (passwordInput.type === 'password'){
-        passwordInput.type='text';
-        passStatus.classList.remove('fa-eye');
-        passStatus.classList.add('fa-eye-slash');
-    }
-    else{
-        passwordInput.type='password';
-        passStatus.classList.remove('fa-eye-slash');
-        passStatus.classList.add('fa-eye');
-    }
+
+    function togglePasswordVisibility() {
+        var passwordInput = document.getElementById('password');
+        var eyeIcon = document.getElementById('eyeIcon');
+
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            eyeIcon.textContent = '🙈'; // Change to eye closed icon or similar
+        } else {
+            passwordInput.type = "password";
+            eyeIcon.textContent = '👁️'; // Change to eye open icon
+        }
     }
 
     function validateForm() {
